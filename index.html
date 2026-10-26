@@ -3,111 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MYA.AI – Jasa Pembuatan Website Statis Modern</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap">
+<title>Muh. Yadi Aldiansyah – Portofolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;600&display=swap">
 <style>
-:root{--bg:#f3faf5;--ink:#0d2b1d;--muted:#4f6b5c;--green:#0f7a4a;--lime:#c6f432;--card:#fff;--line:#d3e6da;--on-lime:#0d2b1d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08150f;--ink:#e8f5ec;--muted:#93b0a0;--green:#3ddc8a;--card:#10241a;--line:#1d3a2a;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#08150f;--ink:#e8f5ec;--muted:#93b0a0;--green:#3ddc8a;--card:#10241a;--line:#1d3a2a;color-scheme:dark}
+:root{--bg:#fbf6ee;--ink:#1b1a17;--muted:#6b655b;--accent:#ff5a36;--card:#fff;--line:#e6dccb;--on-accent:#fff;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14120f;--ink:#f5efe4;--muted:#a79f90;--accent:#ff7a5c;--card:#1e1b17;--line:#332e26;--on-accent:#14120f;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14120f;--ink:#f5efe4;--muted:#a79f90;--accent:#ff7a5c;--card:#1e1b17;--line:#332e26;--on-accent:#14120f;color-scheme:dark}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
-body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 "Plus Jakarta Sans",system-ui,sans-serif;overflow-x:hidden}
-.wrap{max-width:1060px;margin:0 auto;padding:0 1.5rem}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.7 Inter,system-ui,sans-serif;overflow-x:hidden}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.1}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.5rem}
 nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;padding-bottom:.9rem}
-.logo{font-weight:800;font-size:1.3rem;color:var(--ink);text-decoration:none}.logo span{background:var(--lime);color:var(--on-lime);padding:0 .35rem;border-radius:6px;margin-left:.2rem}
-nav ul{display:flex;gap:1.4rem;list-style:none;align-items:center}
-nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
-section{padding:4.5rem 0}
-.hero{text-align:center;padding-top:5rem}
-.pill{display:inline-block;background:var(--lime);color:var(--on-lime);font-weight:800;font-size:.8rem;padding:.35rem .9rem;border-radius:99px;margin-bottom:1.2rem}
-h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;max-width:46rem;margin:0 auto}
-h1 u{text-decoration:none;color:var(--green)}
-.lead{color:var(--muted);font-size:1.15rem;max-width:36rem;margin:1.2rem auto 2rem}
-.btn{display:inline-block;padding:.9rem 1.7rem;border-radius:12px;font-weight:800;text-decoration:none;background:var(--lime);color:var(--on-lime);transition:transform .2s;margin:.3rem}
-.btn:hover{transform:translateY(-3px)}
-.btn.o{background:none;color:var(--ink);border:2px solid var(--ink)}
-h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;text-align:center;margin-bottom:.6rem}
-.sub{text-align:center;color:var(--muted);margin-bottom:2.5rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem}
-.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;position:relative}
-.box h3{font-size:1.2rem;margin-bottom:.4rem}
-.price{font-size:2rem;font-weight:800;color:var(--green);margin:.4rem 0 1rem}
-.price small{font-size:.85rem;color:var(--muted);font-weight:400}
-.box ul{list-style:none;margin-bottom:1.5rem;color:var(--muted);font-size:.95rem}
-.box li{padding:.3rem 0 .3rem 1.5rem;position:relative}
-.box li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
-.hot{border:2px solid var(--green)}
-.hot::after{content:"Paling laris";position:absolute;top:-.8rem;right:1.2rem;background:var(--lime);color:var(--on-lime);font-size:.75rem;font-weight:800;padding:.2rem .8rem;border-radius:99px}
-.box .btn{display:block;text-align:center;margin:0}
-.steps{counter-reset:s}
-.steps .box::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:2.2rem;height:2.2rem;background:var(--lime);color:var(--on-lime);border-radius:50%;font-weight:800;margin-bottom:.8rem}
-.extra{margin-top:1.5rem;text-align:center;color:var(--muted);font-size:.95rem}
-.work a{color:var(--green);font-weight:800;text-decoration:none}
-.cta{background:var(--ink);color:var(--bg);border-radius:24px;text-align:center;padding:3rem 1.5rem}
-.cta p{opacity:.8;margin:.6rem 0 1.5rem}
-footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.85rem}
-@media (max-width:700px){nav li:nth-child(-n+3){display:none}section{padding:3rem 0}}
+.logo{font:800 1.4rem Fraunces,Georgia,serif;color:var(--ink);text-decoration:none}.logo b{color:var(--accent)}
+nav ul{display:flex;gap:1.5rem;list-style:none}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}nav a:hover{color:var(--accent)}
+section{padding:5rem 0}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:3rem;align-items:center;min-height:80vh}
+.tag{display:inline-block;padding:.35rem .9rem;border:1.5px solid var(--ink);border-radius:99px;font-weight:600;font-size:.85rem;margin-bottom:1.2rem}
+h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:800;letter-spacing:-.02em}
+h1 em{color:var(--accent);font-style:italic}
+.lead{color:var(--muted);font-size:1.15rem;margin:1.3rem 0 2rem;max-width:34rem}
+.btn{display:inline-block;padding:.85rem 1.6rem;border-radius:99px;font-weight:600;text-decoration:none;background:var(--accent);color:var(--on-accent);margin:0 .6rem .6rem 0;transition:transform .2s}
+.btn:hover{transform:translateY(-3px) rotate(-1deg)}
+.btn.ghost{background:none;color:var(--ink);border:1.5px solid var(--ink)}
+.avatar{aspect-ratio:1;border-radius:42% 58% 55% 45%/50% 45% 55% 50%;background:var(--accent);display:grid;place-items:center;font:800 9rem Fraunces,Georgia,serif;color:var(--on-accent);transform:rotate(-4deg);max-width:340px;justify-self:center;width:100%}
+h2{font-size:clamp(2rem,5vw,3rem);margin-bottom:2rem}
+h2 span{color:var(--accent)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:3rem;color:var(--muted)}
+.about p+p{margin-top:1rem}
+.note{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--accent);padding:1.2rem 1.4rem;border-radius:12px;color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:.7rem}
+.chip{background:var(--card);border:1px solid var(--line);padding:.6rem 1.1rem;border-radius:99px;font-weight:600}
+.chip small{color:var(--muted);font-weight:400;margin-left:.4rem}
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s}
+.card:hover{transform:translateY(-6px)}
+.shot{height:170px;background:var(--accent);padding:1rem}
+.shot i{display:block;height:100%;background:var(--card);border-radius:8px;opacity:.9;background-image:linear-gradient(var(--line) 0 14px,transparent 14px),linear-gradient(var(--line) 0 30px,transparent 30px);background-size:100% 14px,60% 30px;background-position:0 0,1rem 3rem;background-repeat:no-repeat}
+.shot.b{background:var(--ink)}.shot.c{background:var(--muted)}
+.feat{grid-column:1/-1;display:grid;grid-template-columns:1fr 1.4fr}.feat .shot{height:100%;min-height:200px}
+.badge{display:inline-block;background:var(--accent);color:var(--on-accent);font-size:.75rem;font-weight:600;padding:.2rem .8rem;border-radius:99px;margin-bottom:.7rem}
+.tech{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}.tech span{font-size:.75rem;font-weight:600;border:1px solid var(--line);padding:.15rem .65rem;border-radius:99px;color:var(--muted)}
+@media (max-width:760px){.feat{grid-template-columns:1fr}.feat .shot{min-height:130px}}
+.card div.b{padding:1.4rem}
+.card h3{font-size:1.35rem;margin-bottom:.4rem}
+.card p{color:var(--muted);font-size:.93rem;margin-bottom:1rem}
+.card a{color:var(--accent);font-weight:600;text-decoration:none}
+.contact{text-align:center}
+.contact p{color:var(--muted);max-width:32rem;margin:0 auto 1.8rem}
+footer{border-top:1px solid var(--line);text-align:center;padding:1.5rem;color:var(--muted);font-size:.85rem}
+@media (max-width:760px){.hero,.about{grid-template-columns:1fr}.avatar{max-width:200px;font-size:5rem;order:-1}nav ul{gap:.9rem}nav li:nth-child(n+4){display:none}section{padding:3.5rem 0}.hero{min-height:auto}}
 </style>
 </head>
 <body>
-<nav><div class="wrap"><a class="logo" href="#top">MYA<span>AI</span></a>
-<ul><li><a href="#harga">Harga</a></li><li><a href="#alur">Alur</a></li><li><a href="#hasil">Hasil Kerja</a></li><li><a class="btn" style="padding:.5rem 1rem;margin:0" href="#kontak">Konsultasi</a></li></ul></div></nav>
+<nav><div class="wrap"><a class="logo" href="#top">yadi<b>.</b></a>
+<ul><li><a href="#about">Tentang</a></li><li><a href="#skill">Skill</a></li><li><a href="#projek">Projek</a></li><li><a href="#contact">Kontak</a></li></ul></div></nav>
 
 <main id="top">
 <section class="wrap hero">
-<span class="pill">✨ Website statis modern</span>
-<h1>Punya acara atau bisnis? Buat <u>website</u>-nya sekarang.</h1>
-<p class="lead">Undangan digital, landing page, dan website bisnis yang cepat, rapi di HP, dan siap dibagikan lewat satu link.</p>
-<a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20mau%20konsultasi%20pembuatan%20website.">Konsultasi gratis</a><a class="btn o" href="#harga">Lihat paket</a>
-</section>
-
-<section id="harga" class="wrap">
-<h2>Paket harga</h2><p class="sub">Harga transparan. Domain dan hosting premium dihitung terpisah.</p>
-<div class="grid">
-<div class="box"><h3>Basic</h3><div class="price">Rp150rb<small> / mulai</small></div><ul><li>1 halaman</li><li>Desain responsif</li><li>2x revisi</li><li>Pengerjaan 2–3 hari</li></ul><a class="btn o" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Basic.">Pilih Basic</a></div>
-<div class="box hot"><h3>Standard</h3><div class="price">Rp350rb<small> / mulai</small></div><ul><li>Landing page multi-section</li><li>Animasi &amp; musik latar</li><li>Tombol WhatsApp &amp; peta</li><li>3x revisi</li></ul><a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Standard.">Pilih Standard</a></div>
-<div class="box"><h3>Premium</h3><div class="price">Rp750rb<small> / mulai</small></div><ul><li>Desain custom penuh</li><li>Multi-halaman</li><li>Fitur tambahan (galeri, form)</li><li>5x revisi + bantuan online</li></ul><a class="btn o" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Premium.">Pilih Premium</a></div>
+<div>
+<span class="tag">👋 Frontend Beginner · Bisnis Digital</span>
+<h1>Halo, saya <em>Yadi</em>. Saya membuat web yang rapi &amp; nyaman dipakai.</h1>
+<p class="lead">Mahasiswa Bisnis Digital di Universitas Muhammadiyah Sidenreng Rappang yang sedang tekun belajar HTML, CSS, dan JavaScript.</p>
+<a class="btn" href="#projek">Lihat projek</a><a class="btn ghost" href="https://wa.me/6285641826833">Ajak kolaborasi</a>
 </div>
-<p class="extra">Butuh yang lebih kecil? Kartu ucapan digital mulai <b>Rp50rb</b>. Revisi tambahan dihitung terpisah.</p>
+<div class="avatar" aria-hidden="true">Y</div>
 </section>
 
-<section id="event" class="wrap">
-<h2>Sistem pendaftaran event</h2><p class="sub">Untuk lomba, seminar, atau webinar. Sudah terbukti dipakai di lomba poster tingkat nasional.</p>
-<div class="box" style="border:2px solid var(--green);margin-bottom:1.3rem"><h3>Paket Event</h3><div class="price">Rp1jt<small> / mulai, sesuai fitur</small></div><ul><li>Formulir pendaftaran online</li><li>Upload berkas (PDF atau gambar) langsung ke Google Drive</li><li>Data peserta rapi di Google Sheets dan bisa diunduh ke Excel</li><li>Hitung mundur, kategori, dan formulir otomatis tutup saat deadline</li><li>Tampilan nyaman di HP, hosting gratis</li></ul><a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Sistem%20Pendaftaran%20Event.">Tanya paket Event</a></div>
-<div class="grid steps">
-<div class="box"><h3>Peserta mendaftar</h3><p>Mengisi formulir dan mengunggah berkas lewat HP atau laptop.</p></div>
-<div class="box"><h3>Data tersimpan otomatis</h3><p>Isian masuk ke Google Sheets, file masuk ke folder Google Drive.</p></div>
-<div class="box"><h3>Panitia memantau</h3><p>Cukup buka spreadsheet untuk melihat dan menyeleksi peserta.</p></div>
-</div>
-<p class="extra">Tanpa server dan database, jadi biayanya hemat. Cocok untuk event sampai ratusan peserta karena Google punya batas kuota harian. <a href="https://fast-nationalpostercompetition-umsr.netlify.app/" style="color:var(--green);font-weight:800">Lihat contoh nyatanya →</a></p>
-</section>
-
-<section id="alur" class="wrap">
-<h2>Cara kerjanya</h2><p class="sub">Simpel, tanpa ribet.</p>
-<div class="grid steps">
-<div class="box"><h3>Konsultasi</h3><p>Ceritakan kebutuhan lewat WhatsApp.</p></div>
-<div class="box"><h3>Desain &amp; Bangun</h3><p>Saya buatkan, kamu pantau progresnya.</p></div>
-<div class="box"><h3>Revisi</h3><p>Penyesuaian sesuai jatah revisi paketmu.</p></div>
-<div class="box"><h3>Tayang</h3><p>Website online dan siap dibagikan.</p></div>
+<section id="about" class="wrap">
+<h2>Tentang <span>saya</span></h2>
+<div class="about">
+<div><p>Saya percaya web development adalah perpaduan kreativitas dan logika. Saya suka membuat website yang indah, responsif, dan mudah dipakai.</p>
+<p>Saya terbuka untuk kolaborasi dan selalu ingin belajar teknologi frontend terbaru.</p></div>
+<div class="note">💡 Saya jujur: dalam membuat web ini saya dibantu AI seperti Claude, ChatGPT, dan Gemini, karena saya masih tahap belajar. Setiap projek adalah latihan nyata.</div>
 </div>
 </section>
 
-<section id="hasil" class="wrap work">
-<h2>Hasil kerja nyata</h2><p class="sub">Bukan contoh kosong. Semua bisa dibuka.</p>
-<div class="grid">
-<div class="box"><h3>Pendaftaran Lomba Nasional</h3><p>Formulir, upload poster, dan data ke Google Sheets &amp; Drive.</p><p><a href="https://fast-nationalpostercompetition-umsr.netlify.app/">Buka →</a></p></div>
-<div class="box"><h3>Undangan Digital</h3><p>Minimalis dengan musik latar.</p><p><a href="https://mya-y.github.io/undangan/">Buka →</a></p></div>
-<div class="box"><h3>Web Kelas Bisnis Digital</h3><p>Fitur lengkap dengan Firebase.</p><p><a href="https://bisdig25umsr.netlify.app/">Buka →</a></p></div>
-<div class="box"><h3>Web Jasa Pertama</h3><p>Website penjualan jasa.</p><p><a href="https://mya-y.github.io/jasa-AI/">Buka →</a></p></div>
+<section id="skill" class="wrap">
+<h2>Skill <span>yang saya pelajari</span></h2>
+<div class="chips">
+<span class="chip">HTML5<small>dasar</small></span><span class="chip">CSS3<small>dasar</small></span><span class="chip">JavaScript<small>dasar</small></span>
+<span class="chip">Responsive Design<small>menengah</small></span><span class="chip">UI/UX<small>dasar</small></span><span class="chip">Prompt AI<small>menengah</small></span><span class="chip">Firebase<small>mulai belajar</small></span><span class="chip">Integrasi Google Sheets &amp; Drive<small>sudah dipakai</small></span>
 </div>
 </section>
 
-<section id="kontak" class="wrap">
-<div class="cta"><h2>Siap mulai?</h2><p>Konsultasi gratis, tanpa kewajiban order.</p>
-<a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20mau%20konsultasi%20pembuatan%20website.">Chat WhatsApp</a><a class="btn o" style="color:var(--bg);border-color:var(--bg)" href="https://instagram.com/ydiii_ee">Instagram</a></div>
+<section id="projek" class="wrap">
+<h2>Projek <span>pilihan</span></h2>
+<div class="projects">
+<div class="card feat"><div class="shot"><i></i></div><div class="b"><span class="badge">⭐ Projek terbaru · Skala nasional</span><h3>FAST National Poster Competition 2026</h3><p>Web pendaftaran lomba poster tingkat nasional untuk Fakultas Sains dan Teknologi UM Sidrap. Peserta dari berbagai kampus mengisi formulir dan mengunggah poster PDF. Data masuk otomatis ke Google Sheets dan file tersimpan di Google Drive, tanpa database.</p><div class="tech"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Google Sheets</span><span>Google Drive</span></div><a href="https://fast-nationalpostercompetition-umsr.netlify.app/">Lihat projek →</a></div></div>
+<div class="card"><div class="shot"><i></i></div><div class="b"><h3>Web Jasa Pembuatan Web</h3><p>Website untuk menjual jasa pembuatan web, dibuat dengan HTML, CSS, dan JS.</p><a href="https://mya-y.github.io/jasa-AI/">Lihat projek →</a></div></div>
+<div class="card"><div class="shot b"><i></i></div><div class="b"><h3>Web Kelas Bisnis Digital</h3><p>Web kelas yang simpel dan minimalis dengan fitur berguna. Memakai Firebase sebagai backend ringan dan Cloudinary untuk penyimpanan.</p><a href="https://bisdig25umsr.netlify.app/">Lihat projek →</a></div></div>
+<div class="card"><div class="shot c"><i></i></div><div class="b"><h3>Undangan Digital</h3><p>Undangan online minimalis dengan musik latar dan layout sederhana.</p><a href="https://mya-y.github.io/undangan/">Lihat projek →</a></div></div>
+</div>
+</section>
+
+<section id="contact" class="wrap contact">
+<h2>Ayo <span>ngobrol</span></h2>
+<p>Tertarik berkolaborasi atau punya pertanyaan? Hubungi saya lewat salah satu tombol di bawah.</p>
+<a class="btn" href="https://wa.me/6285641826833">WhatsApp</a><a class="btn ghost" href="https://instagram.com/ydiii_ee">Instagram</a><a class="btn ghost" href="https://tiktok.com/@ydiii_eee">TikTok</a><a class="btn ghost" href="https://github.com/muhyadialdiansyah-alt">GitHub</a>
 </section>
 </main>
-<footer>© 2026 MYA.AI · Dibuat oleh Muh. Yadi Aldiansyah</footer>
+<footer>© 2026 Muh. Yadi Aldiansyah</footer>
 </body>
 </html>
