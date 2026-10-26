@@ -1,864 +1,113 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Muh. Yadi - Frontend Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-dark: #0a0e27;
-            --secondary-dark: #1a1f3a;
-            --accent-blue: #00d4ff;
-            --accent-purple: #a78bfa;
-            --text-light: #e0e0e0;
-            --border-color: #2d3748;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1a2e 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* SPLASH SCREEN */
-        .splash {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1a2e 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 9999;
-            animation: splashFadeOut 3s ease-in-out forwards;
-        }
-
-        .splash-content {
-            text-align: center;
-            animation: splashPulse 3s ease-in-out forwards;
-        }
-
-        .splash-text {
-            font-size: 2rem;
-            font-weight: 600;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        @keyframes splashPulse {
-
-            0%,
-            10% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-
-            20%,
-            80% {
-                opacity: 1;
-                transform: scale(1);
-            }
-
-            90%,
-            100% {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-        }
-
-        @keyframes splashFadeOut {
-
-            0%,
-            80% {
-                visibility: visible;
-            }
-
-            100% {
-                visibility: hidden;
-            }
-        }
-
-        /* NAVBAR */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(10, 14, 39, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            animation: slideDown 0.5s ease-out;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-item a {
-            color: var(--text-light);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-item a:hover,
-        .nav-item a.active {
-            color: var(--accent-blue);
-        }
-
-        .nav-item a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-blue);
-            transition: width 0.3s ease;
-        }
-
-        .nav-item a:hover::after,
-        .nav-item a.active::after {
-            width: 100%;
-        }
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            cursor: pointer;
-        }
-
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: var(--accent-blue);
-            margin: 5px 0;
-            transition: 0.3s;
-        }
-
-        /* MAIN CONTENT */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding-top: 80px;
-            scroll-margin-top: 80px;
-        }
-
-        /* HOME SECTION */
-        #home {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, #1a1a2e 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .home-content {
-            animation: fadeInUp 1s ease-out;
-            max-width: 600px;
-        }
-
-        .home-label {
-            font-size: 1.2rem;
-            color: var(--accent-blue);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        .home-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            animation: slideInLeft 0.8s ease-out 0.1s backwards;
-        }
-
-        .home-subtitle {
-            font-size: 1.3rem;
-            color: var(--accent-purple);
-            margin-bottom: 0.5rem;
-            animation: slideInLeft 0.8s ease-out 0.2s backwards;
-        }
-
-        .home-info {
-            font-size: 1rem;
-            color: #999;
-            animation: slideInLeft 0.8s ease-out 0.3s backwards;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-            animation: slideInUp 0.8s ease-out 0.4s backwards;
-        }
-
-        .social-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(0, 212, 255, 0.1);
-            border: 2px solid var(--accent-blue);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1.3rem;
-        }
-
-        .social-icon:hover {
-            background: var(--accent-blue);
-            color: var(--primary-dark);
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* SECTION STYLES */
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::before {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            animation: expandWidth 0.8s ease-out;
-        }
-
-        @keyframes expandWidth {
-            from {
-                width: 0;
-            }
-
-            to {
-                width: 100%;
-            }
-        }
-
-        /* ABOUT SECTION */
-        #about {
-            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
-        }
-
-        .about-content {
-            max-width: 700px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #b0b0b0;
-            margin-bottom: 1.5rem;
-        }
-
-        /* SKILL SECTION */
-        #skill {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 900px;
-        }
-
-        .skill-card {
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 10px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .skill-card:hover {
-            border-color: var(--accent-blue);
-            background: rgba(26, 31, 58, 1);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.1);
-        }
-
-        .skill-icon {
-            font-size: 3rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-        }
-
-        .skill-name {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .skill-level {
-            font-size: 0.9rem;
-            color: #888;
-        }
-
-        /* PROJECT SECTION */
-        #projek {
-            background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            width: 100%;
-            max-width: 1000px;
-        }
-
-        .project-card {
-            background: rgba(26, 31, 58, 0.8);
-            border: 1px solid rgba(0, 212, 255, 0.2);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(167, 139, 250, 0.2);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--primary-dark);
-            overflow: hidden;
-        }
-
-        .project-card img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-
-        .project-info {
-            padding: 1.5rem;
-        }
-
-        .project-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--accent-blue);
-        }
-
-        .project-desc {
-            font-size: 0.9rem;
-            color: #999;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-link {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-            color: var(--primary-dark);
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
-        }
-
-        /* CONTACT SECTION */
-        #contact {
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
-        }
-
-        .contact-content {
-            text-align: center;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .contact-text {
-            font-size: 1.1rem;
-            color: #b0b0b0;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-
-        .contact-icons {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .contact-icon-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(26, 31, 58, 0.8);
-            border: 2px solid rgba(0, 212, 255, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .contact-icon-link:hover {
-            background: var(--accent-blue);
-            color: var(--primary-dark);
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.3);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 60px;
-                flex-direction: column;
-                background: rgba(10, 14, 39, 0.98);
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                gap: 0;
-                padding: 2rem 0;
-            }
-
-            .nav-menu.active {
-                left: 0;
-            }
-
-            .nav-item {
-                padding: 1rem 0;
-                border-bottom: 1px solid rgba(0, 212, 255, 0.1);
-            }
-
-            .splash-text {
-                font-size: 2rem;
-            }
-
-            .home-title {
-                font-size: 2.2rem;
-            }
-
-            .home-label,
-            .home-subtitle,
-            .home-info {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-
-            .contact-icons {
-                gap: 1.5rem;
-            }
-
-            section {
-                padding: 100px 0 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .navbar {
-                padding: 0.8rem 1rem;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-            }
-
-            .home-title {
-                font-size: 1.8rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .social-icons {
-                gap: 1rem;
-            }
-
-            .social-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MYA.AI – Jasa Pembuatan Website Statis Modern</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#f3faf5;--ink:#0d2b1d;--muted:#4f6b5c;--green:#0f7a4a;--lime:#c6f432;--card:#fff;--line:#d3e6da;--on-lime:#0d2b1d;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#08150f;--ink:#e8f5ec;--muted:#93b0a0;--green:#3ddc8a;--card:#10241a;--line:#1d3a2a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#08150f;--ink:#e8f5ec;--muted:#93b0a0;--green:#3ddc8a;--card:#10241a;--line:#1d3a2a;color-scheme:dark}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{background:var(--bg);color:var(--ink);font:400 1rem/1.65 "Plus Jakarta Sans",system-ui,sans-serif;overflow-x:hidden}
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.5rem}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:.9rem;padding-bottom:.9rem}
+.logo{font-weight:800;font-size:1.3rem;color:var(--ink);text-decoration:none}.logo span{background:var(--lime);color:var(--on-lime);padding:0 .35rem;border-radius:6px;margin-left:.2rem}
+nav ul{display:flex;gap:1.4rem;list-style:none;align-items:center}
+nav a{color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem}
+section{padding:4.5rem 0}
+.hero{text-align:center;padding-top:5rem}
+.pill{display:inline-block;background:var(--lime);color:var(--on-lime);font-weight:800;font-size:.8rem;padding:.35rem .9rem;border-radius:99px;margin-bottom:1.2rem}
+h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;max-width:46rem;margin:0 auto}
+h1 u{text-decoration:none;color:var(--green)}
+.lead{color:var(--muted);font-size:1.15rem;max-width:36rem;margin:1.2rem auto 2rem}
+.btn{display:inline-block;padding:.9rem 1.7rem;border-radius:12px;font-weight:800;text-decoration:none;background:var(--lime);color:var(--on-lime);transition:transform .2s;margin:.3rem}
+.btn:hover{transform:translateY(-3px)}
+.btn.o{background:none;color:var(--ink);border:2px solid var(--ink)}
+h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;text-align:center;margin-bottom:.6rem}
+.sub{text-align:center;color:var(--muted);margin-bottom:2.5rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem}
+.box{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:1.8rem;position:relative}
+.box h3{font-size:1.2rem;margin-bottom:.4rem}
+.price{font-size:2rem;font-weight:800;color:var(--green);margin:.4rem 0 1rem}
+.price small{font-size:.85rem;color:var(--muted);font-weight:400}
+.box ul{list-style:none;margin-bottom:1.5rem;color:var(--muted);font-size:.95rem}
+.box li{padding:.3rem 0 .3rem 1.5rem;position:relative}
+.box li::before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.hot{border:2px solid var(--green)}
+.hot::after{content:"Paling laris";position:absolute;top:-.8rem;right:1.2rem;background:var(--lime);color:var(--on-lime);font-size:.75rem;font-weight:800;padding:.2rem .8rem;border-radius:99px}
+.box .btn{display:block;text-align:center;margin:0}
+.steps{counter-reset:s}
+.steps .box::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:2.2rem;height:2.2rem;background:var(--lime);color:var(--on-lime);border-radius:50%;font-weight:800;margin-bottom:.8rem}
+.extra{margin-top:1.5rem;text-align:center;color:var(--muted);font-size:.95rem}
+.work a{color:var(--green);font-weight:800;text-decoration:none}
+.cta{background:var(--ink);color:var(--bg);border-radius:24px;text-align:center;padding:3rem 1.5rem}
+.cta p{opacity:.8;margin:.6rem 0 1.5rem}
+footer{text-align:center;padding:2rem 1rem;color:var(--muted);font-size:.85rem}
+@media (max-width:700px){nav li:nth-child(-n+3){display:none}section{padding:3rem 0}}
+</style>
 </head>
-
 <body>
-    <!-- SPLASH SCREEN -->
-    <div class="splash">
-        <div class="splash-content">
-            <p class="splash-text">Welcome to My Website</p>
-        </div>
-    </div>
+<nav><div class="wrap"><a class="logo" href="#top">MYA<span>AI</span></a>
+<ul><li><a href="#harga">Harga</a></li><li><a href="#alur">Alur</a></li><li><a href="#hasil">Hasil Kerja</a></li><li><a class="btn" style="padding:.5rem 1rem;margin:0" href="#kontak">Konsultasi</a></li></ul></div></nav>
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="logo">Yadi</div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#skill" class="nav-link">Skill</a></li>
-                <li class="nav-item"><a href="#projek" class="nav-link">Projek</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+<main id="top">
+<section class="wrap hero">
+<span class="pill">✨ Website statis modern</span>
+<h1>Punya acara atau bisnis? Buat <u>website</u>-nya sekarang.</h1>
+<p class="lead">Undangan digital, landing page, dan website bisnis yang cepat, rapi di HP, dan siap dibagikan lewat satu link.</p>
+<a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20mau%20konsultasi%20pembuatan%20website.">Konsultasi gratis</a><a class="btn o" href="#harga">Lihat paket</a>
+</section>
 
-    <!-- HOME -->
-    <section id="home">
-        <div class="container">
-            <div class="home-content">
-                <p class="home-label">Frontend Beginner</p>
-                <h1 class="home-title">Muh. Yadi Aldiansyah</h1>
-                <p class="home-subtitle">Mahasiswa Bisnis Digital</p>
-                <p class="home-info">Universitas Muhammadiyah Sidenreng Rappang</p>
-                <div class="social-icons">
-                    <a href="https://wa.me/6285641826833" class="social-icon" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://instagram.com/ydiii_ee" class="social-icon" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://tiktok.com/@ydiii_eee" class="social-icon" title="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://github.com/muhyadialdiansyah-alt" class="social-icon" title="github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="harga" class="wrap">
+<h2>Paket harga</h2><p class="sub">Harga transparan. Domain dan hosting premium dihitung terpisah.</p>
+<div class="grid">
+<div class="box"><h3>Basic</h3><div class="price">Rp150rb<small> / mulai</small></div><ul><li>1 halaman</li><li>Desain responsif</li><li>2x revisi</li><li>Pengerjaan 2–3 hari</li></ul><a class="btn o" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Basic.">Pilih Basic</a></div>
+<div class="box hot"><h3>Standard</h3><div class="price">Rp350rb<small> / mulai</small></div><ul><li>Landing page multi-section</li><li>Animasi &amp; musik latar</li><li>Tombol WhatsApp &amp; peta</li><li>3x revisi</li></ul><a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Standard.">Pilih Standard</a></div>
+<div class="box"><h3>Premium</h3><div class="price">Rp750rb<small> / mulai</small></div><ul><li>Desain custom penuh</li><li>Multi-halaman</li><li>Fitur tambahan (galeri, form)</li><li>5x revisi + bantuan online</li></ul><a class="btn o" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Premium.">Pilih Premium</a></div>
+</div>
+<p class="extra">Butuh yang lebih kecil? Kartu ucapan digital mulai <b>Rp50rb</b>. Revisi tambahan dihitung terpisah.</p>
+</section>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="container">
-            <div class="about-content">
-                <h2 class="section-title">About Me</h2>
-                <p class="about-text">
-                    Halo! Saya adalah seorang mahasiswa Bisnis Digital yang sedang dalam mengembangkan skill di bidang
-                    frontend development. Saya percaya bahwa web development adalah kombinasi sempurna antara
-                    kreativitas dan logika.
-                </p>
-                <p class="about-text">
-                    Saya senang membuat website yang tidak hanya indah secara visual, tetapi juga responsif dan
-                    user-friendly. Melalui perjalanan belajar saya, saya terus mengasah kemampuan dalam HTML, CSS, dan
-                    JavaScript.
-                </p>
-                <p class="about-text">
-                    dalam pembuatan web ini, saya menggunakan bantuan dari AI seperti claude, chatgpt, dan gemini.
-                    Karena juga saya masih dalam tahap belajar
-                </p>
-                <p class="about-text">
-                    Saya terbuka untuk kolaborasi dan selalu eager untuk belajar teknologi frontend terbaru. Mari kita
-                    ciptakan sesuatu yang luar biasa bersama!
-                </p>
-            </div>
-        </div>
-    </section>
+<section id="event" class="wrap">
+<h2>Sistem pendaftaran event</h2><p class="sub">Untuk lomba, seminar, atau webinar. Sudah terbukti dipakai di lomba poster tingkat nasional.</p>
+<div class="box" style="border:2px solid var(--green);margin-bottom:1.3rem"><h3>Paket Event</h3><div class="price">Rp1jt<small> / mulai, sesuai fitur</small></div><ul><li>Formulir pendaftaran online</li><li>Upload berkas (PDF atau gambar) langsung ke Google Drive</li><li>Data peserta rapi di Google Sheets dan bisa diunduh ke Excel</li><li>Hitung mundur, kategori, dan formulir otomatis tutup saat deadline</li><li>Tampilan nyaman di HP, hosting gratis</li></ul><a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20tertarik%20paket%20Sistem%20Pendaftaran%20Event.">Tanya paket Event</a></div>
+<div class="grid steps">
+<div class="box"><h3>Peserta mendaftar</h3><p>Mengisi formulir dan mengunggah berkas lewat HP atau laptop.</p></div>
+<div class="box"><h3>Data tersimpan otomatis</h3><p>Isian masuk ke Google Sheets, file masuk ke folder Google Drive.</p></div>
+<div class="box"><h3>Panitia memantau</h3><p>Cukup buka spreadsheet untuk melihat dan menyeleksi peserta.</p></div>
+</div>
+<p class="extra">Tanpa server dan database, jadi biayanya hemat. Cocok untuk event sampai ratusan peserta karena Google punya batas kuota harian. <a href="https://fast-nationalpostercompetition-umsr.netlify.app/" style="color:var(--green);font-weight:800">Lihat contoh nyatanya →</a></p>
+</section>
 
-    <!-- SKILL -->
-    <section id="skill">
-        <div class="container">
-            <h2 class="section-title">My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                    <h3 class="skill-name">HTML5</h3>
-                    <p class="skill-level">Beginner</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                    <h3 class="skill-name">CSS3</h3>
-                    <p class="skill-level">Beginner</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fab fa-js"></i></div>
-                    <h3 class="skill-name">JavaScript</h3>
-                    <p class="skill-level">Beginner</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fab fa-check-circle-o"></i></div>
-                    <h3 class="skill-name">Responsive Design</h3>
-                    <p class="skill-level">Intermediate</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fab fa-figma"></i></div>
-                    <h3 class="skill-name">UI/UX Design</h3>
-                    <p class="skill-level">Beginner</p>
-                </div>
-                <div class="skill-card">
-                    <div class="skill-icon"><i class="fas fa-paint-brush"></i></div>
-                    <h3 class="skill-name">Prompt AI</h3>
-                    <p class="skill-level">Intermediate</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="alur" class="wrap">
+<h2>Cara kerjanya</h2><p class="sub">Simpel, tanpa ribet.</p>
+<div class="grid steps">
+<div class="box"><h3>Konsultasi</h3><p>Ceritakan kebutuhan lewat WhatsApp.</p></div>
+<div class="box"><h3>Desain &amp; Bangun</h3><p>Saya buatkan, kamu pantau progresnya.</p></div>
+<div class="box"><h3>Revisi</h3><p>Penyesuaian sesuai jatah revisi paketmu.</p></div>
+<div class="box"><h3>Tayang</h3><p>Website online dan siap dibagikan.</p></div>
+</div>
+</section>
 
-    <!-- PROJECT -->
-    <section id="projek">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Project 1</h3>
-                        <p class="project-desc">ini adalah web ke 2 saya untuk membuat jasa pembuatan web. Teknologi
-                            yang digunakan adalah HTML, CSS, dan JS dan hasil yang dicapai adalah membuat website khusus
-                            untuk menjual jasa.</p>
-                        <a href="https://mya-y.github.io/jasa-AI/" class="project-link">Lihat
-                            Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Project 2</h3>
-                        <p class="project-desc">ini adalah projek selanjutnya yang saya buat yaitu web untuk kelas saya di prodi bisnis digital yang
-                            simple dan menarik. teknologi yang digunakan adalah HTML,CSS dan JS serta menggunakan website backend ringan yaitu firebase dan juga storage cloudnya yaitu cloudinary. hasilnya membuat
-                            website yang simple, fungsional dan minimalis serta beberapa fitur yang berguna dan juga menarik.</p>
-                        <a href="https://bisdig25umsr.netlify.app/ class="project-link">Lihat
-                            Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-envelope-open-text"></i>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-name">Project 3</h3>
-                        <p class="project-desc">website undangan yang simpel dan minimalis, dengan halaman yang memiliki musik serta dengan layout yang sederhana</p>
-                        <a href="https://mya-y.github.io/undangan/" class="project-link">Lihat Project</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="hasil" class="wrap work">
+<h2>Hasil kerja nyata</h2><p class="sub">Bukan contoh kosong. Semua bisa dibuka.</p>
+<div class="grid">
+<div class="box"><h3>Pendaftaran Lomba Nasional</h3><p>Formulir, upload poster, dan data ke Google Sheets &amp; Drive.</p><p><a href="https://fast-nationalpostercompetition-umsr.netlify.app/">Buka →</a></p></div>
+<div class="box"><h3>Undangan Digital</h3><p>Minimalis dengan musik latar.</p><p><a href="https://mya-y.github.io/undangan/">Buka →</a></p></div>
+<div class="box"><h3>Web Kelas Bisnis Digital</h3><p>Fitur lengkap dengan Firebase.</p><p><a href="https://bisdig25umsr.netlify.app/">Buka →</a></p></div>
+<div class="box"><h3>Web Jasa Pertama</h3><p>Website penjualan jasa.</p><p><a href="https://mya-y.github.io/jasa-AI/">Buka →</a></p></div>
+</div>
+</section>
 
-    <!-- CONTACT -->
-    <section id="contact">
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title">Get In Touch</h2>
-                <p class="contact-text">
-                    Tertarik untuk berkolaborasi atau punya pertanyaan? Hubungi saya melalui social media di bawah ini!
-                </p>
-                <div class="contact-icons">
-                    <a href="https://wa.me/6285641826833" class="contact-icon-link" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://instagram.com/ydiii_ee" class="contact-icon-link" title="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://tiktok.com/@ydiii_eee" class="contact-icon-link" title="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="https://github.com/muhyadialdiansyah-alt" class="contact-icon-link" title="github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <script>
-        // MOBILE MENU TOGGLE
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        const navLinks = document.querySelectorAll('.nav-link');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                hamburger.classList.remove('active');
-            });
-        });
-
-        // SMOOTH SCROLL & ACTIVE LINK
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // SMOOTH SCROLL BEHAVIOR
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+<section id="kontak" class="wrap">
+<div class="cta"><h2>Siap mulai?</h2><p>Konsultasi gratis, tanpa kewajiban order.</p>
+<a class="btn" href="https://wa.me/6287852867866?text=Halo%20MYA.AI%2C%20saya%20mau%20konsultasi%20pembuatan%20website.">Chat WhatsApp</a><a class="btn o" style="color:var(--bg);border-color:var(--bg)" href="https://instagram.com/ydiii_ee">Instagram</a></div>
+</section>
+</main>
+<footer>© 2026 MYA.AI · Dibuat oleh Muh. Yadi Aldiansyah</footer>
 </body>
-
 </html>
